@@ -1,0 +1,9 @@
+.DS_Store
+/.env
+/package-lock.json
+/yarn.lock
+/*.db
+/db.json
+
+/node_modules
+/.next
