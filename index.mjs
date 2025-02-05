@@ -20,6 +20,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 app.use("/", express.static(join(__dirname, "public")));
+app.use(
+  "/favicon.ico",
+  express.static(join(__dirname, "public", "favicon.ico"))
+);
 app.use("/api", event);
 
 mongoose.connection.once("open", () => {
