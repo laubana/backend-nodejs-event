@@ -1,26 +1,26 @@
 import cors from "cors";
-import { config } from "dotenv";
+import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
+import path from "path";
+import url from "url";
 
-import corsOptions from "./configs/cors.mjs";
-import connect from "./configs/db.mjs";
+import corsConfig from "./configs/corsConfig.mjs";
+import dbConfig from "./configs/dbConfig.mjs";
 import event from "./routes/event.mjs";
 
-config();
-connect();
+dotenv.config();
+dbConfig.connect();
 
 const app = express();
-app.use(cors(corsOptions));
+app.use(cors(corsConfig.corsOptions));
 app.use(express.json());
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-app.use("/", express.static(join(__dirname, "public")));
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use("/", express.static(path.join(__dirname, "public")));
 app.use(
   "/favicon.ico",
-  express.static(join(__dirname, "public", "favicon.ico"))
+  express.static(path.join(__dirname, "public", "favicon.ico"))
 );
 app.use("/api", event);
 

@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 import "../models/Event.mjs";
 
-export default async () => {
+const connect = async () => {
   try {
     await mongoose.connect(process.env.DB_URI);
   } catch (error) {
@@ -11,3 +11,5 @@ export default async () => {
     console.error("Failed to connect to DB 🚨");
   }
 };
+
+export default { connect };

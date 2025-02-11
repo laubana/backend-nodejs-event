@@ -1,4 +1,4 @@
-export default {
+const corsOptions = {
   origin: (origin, callback) => {
     if (process.env.ORIGINS.split(",").indexOf(origin) !== -1 || !origin) {
       callback(null, true);
@@ -10,3 +10,5 @@ export default {
   optionsSuccessStatus: 204,
   origin: true,
 };
+
+export default { corsOptions };
