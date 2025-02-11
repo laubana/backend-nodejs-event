@@ -7,8 +7,6 @@
     "start": "node index.mjs",
     "dev": "nodemon index.mjs"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
